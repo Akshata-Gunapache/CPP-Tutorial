@@ -21,6 +21,7 @@ This repository contains various topics I have learned during my journey of buil
 - Control Structures
 - Arrays and Pointers
 - Structures, Union and Enum
+- Functions : Types , Call By Value , Call By Reference , Overloading
 
 Feel free to explore the repository and learn along with me!
 
