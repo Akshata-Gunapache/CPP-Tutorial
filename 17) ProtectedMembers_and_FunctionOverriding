@@ -1,0 +1,91 @@
+#include<iostream>
+#include<string>
+
+using namespace std;
+
+//-----------------------------C++ Protected Members---------------------------------
+//We need protected members if we want to hide the data of a class , but still want tthat data to be inherited by its derived classes.
+
+//Example
+//base class
+class Animal{
+    private:
+    string color;
+    protected:
+    string type;
+    public:
+    void eat(){
+        cout<<"I can eat"<<endl;
+    }
+    void sleep(){
+        cout<<"I can sleep"<<endl;
+    }
+    void setColor(string clr){
+        color = clr;
+    }
+    string getColor(){
+        return color;
+    }
+};
+
+//derived class
+class Dog:public Animal{
+    public:
+    void setType(string tp){
+        type = tp;
+    }
+    void display(string c){
+        cout<<"I am a "<<type<<endl;
+        cout<<"My color is "<<c<<endl;
+    }
+    void bark(){
+        cout<<"I can bark!"<<endl;
+    }
+};
+
+int main(){
+    //create object of dog class
+    Dog d1;
+    d1.eat();
+    d1.sleep();
+    d1.setColor("black");
+
+    d1.bark();
+    d1.setType("mammal");
+
+    d1.display(d1.getColor());
+    return 0;
+}
+
+//the variable "type" is protected and is thus accessible from the derived class Dog
+
+
+
+
+
+//--------------------------------FUNCTION OVERRIDING-----------------------------------
+class Base{
+    public:
+    void print(){
+        cout<<"Base Function"<<endl;
+    }
+};
+class Derived : public Base{
+    public:
+    void print(){
+        cout<<"Derived Function"<<endl;
+    }
+};
+int main(){
+    Derived d1,d2;
+    d1.print();
+    Base b1;
+    b1.print();
+
+    //to access overriden function to the base class
+    d2.Base::print(); //:: is called a scope resolution operator
+
+    Base *ptr = &d1;  // pointer of Base type that points to d1
+    ptr->print();  // call function of Base class using ptr
+    return 0;
+}
